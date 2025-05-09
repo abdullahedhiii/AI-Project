@@ -47,11 +47,12 @@ class UltimateTicTacToeGUI:
         Welcome to Ultimate Tic Tac Toe!
         
         Rules:
-        1. You play as X (red) against the AI as O (blue)
+        1. You play as X against the AI as O 
         2. The game consists of nine 3x3 boards
         3. Win three small boards in a row to win the game
         4. You can play in any unfinished board
         5. When you win a board, you get another turn!
+        6. AI wants to beat you, play smart!
         
         Click 'Start Game' to begin!
         """
