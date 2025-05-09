@@ -31,7 +31,6 @@ class UltimateTicTacToeGUI:
         self.create_welcome_screen()
 
     def create_welcome_screen(self):
-        """Create the welcome screen with game introduction."""
         welcome_frame = tk.Frame(self.main_frame, bg=self.colors['background'])
         welcome_frame.pack(expand=True, fill='both')
         
@@ -78,14 +77,12 @@ class UltimateTicTacToeGUI:
         start_button.pack(pady=20)
 
     def start_game(self):
-        """Start the game and create the game board."""
         for widget in self.main_frame.winfo_children():
             widget.destroy()
         self.create_game_board()
         self.update_board_appearance()
 
     def create_game_board(self):
-        """Create the game board GUI."""
         self.status_label = tk.Label(
             self.main_frame,
             text="Your turn (X)",
@@ -127,7 +124,6 @@ class UltimateTicTacToeGUI:
                         self.buttons[i][j][x][y] = button
 
     def update_board_appearance(self):
-        """Update the appearance of all boards based on game state."""
         valid_moves = self.game.get_valid_moves()
         current_turn = "Your" if self.game.current_player == -1 else "AI's"
         current_symbol = "X" if self.game.current_player == -1 else "O"
@@ -170,14 +166,12 @@ class UltimateTicTacToeGUI:
             self.root.after(500, self.process_ai_move)
 
     def make_move(self, i: int, j: int, x: int, y: int):
-        """Handle player move and update GUI."""
         if self.game.make_move((i, j, x, y)):
             self.update_board_appearance()
             if self.game.is_game_over():
                 self.show_game_over()
 
     def process_ai_move(self):
-        """Process AI move and update the game state."""
         move = self.ai.get_best_move(self.game)
         if move:
             if self.game.make_move(move):
@@ -186,16 +180,21 @@ class UltimateTicTacToeGUI:
                     self.show_game_over()
 
     def show_game_over(self):
-        """Show game over message and handle end of game."""
         winner = self.game.get_winner()
         if winner == 1:
+            print('AI wont')
             messagebox.showinfo("Game Over", "AI wins!")
         elif winner == -1:
+            print('AI lost')
             messagebox.showinfo("Game Over", "You win!")
         else:
+            print('Draw')
             messagebox.showinfo("Game Over", "It's a tie!")
+        average = self.ai.get_average_time_taken()
+        print(f'Average time taken by AI {average:.4f} seconds')
+        with open('game_test.csv','a') as file:
+            file.write(f'{winner},{average:.4f}\n')
         self.root.quit()
 
     def run(self):
-        """Start the GUI application."""
         self.root.mainloop() 

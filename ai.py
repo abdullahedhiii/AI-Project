@@ -1,11 +1,21 @@
 import numpy as np
 from typing import Tuple, List, Optional
 from game import UltimateTicTacToe
+import time
 
 class UltimateTicTacToeAI:
     def __init__(self, depth: int = 3):
         self.depth = depth
-
+        self.time_taken = []
+        self.last_board_played_in = None
+    
+    def get_average_time_taken(self):
+        sum = 0
+        for t in self.time_taken:
+            sum+=t
+            
+        return sum/len(self.time_taken)
+        
     def evaluate_board(self, game: UltimateTicTacToe) -> float:
         """Evaluate the current board state using heuristics."""
         main_board, small_boards = game.get_board_state()
@@ -83,7 +93,6 @@ class UltimateTicTacToeAI:
 
     def minimax(self, game: UltimateTicTacToe, depth: int, alpha: float, beta: float, 
                 maximizing_player: bool) -> Tuple[float, Optional[Tuple[int, int, int, int]]]:
-        """Minimax algorithm with alpha-beta pruning."""
         if depth == 0 or game.is_game_over():
             return self.evaluate_board(game), None
 
@@ -130,12 +139,17 @@ class UltimateTicTacToeAI:
             return min_eval, best_move
 
     def get_best_move(self, game: UltimateTicTacToe) -> Optional[Tuple[int, int, int, int]]:
-        """Get the best move for the current game state."""
         if game.current_player != 1:  
             return None
-        valid_moves = game.get_valid_moves()
+        valid_moves = game.get_valid_moves(self.last_board_played_in)
         if not valid_moves:
             return None
-            
+        
+        start_time = time.time()    
         _, best_move = self.minimax(game, self.depth, float('-inf'), float('inf'), True)
+        end_time = time.time()
+        i, j, x, y = best_move
+
+        self.last_board_played_in = (i, j, x, y)
+        self.time_taken.append(end_time-start_time)
         return best_move 

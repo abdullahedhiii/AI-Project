@@ -9,20 +9,29 @@ class UltimateTicTacToe:
         self.game_over = False
         self.winner = 0
 
-    def get_valid_moves(self) -> List[Tuple[int, int, int, int]]:
-        """Get all valid moves for the current player."""
+    def get_valid_moves(self,last_move = None) -> List[Tuple[int, int, int, int]]:
         valid_moves = []
+        if last_move:
+          _, _, x, y = last_move  
+          if self.main_board[x, y] == 0:
+                for i in range(3):
+                  for j in range(3):
+                    if self.small_boards[x, y, i, j] == 0:
+                        valid_moves.append((x, y, i, j))
+          if valid_moves:
+                return valid_moves 
+            
         for i in range(3):
-            for j in range(3):
-                if self.main_board[i, j] == 0:  
-                    for x in range(3):
+           for j in range(3):
+               if self.main_board[i, j] == 0:
+                   for x in range(3):
                         for y in range(3):
-                            if self.small_boards[i, j, x, y] == 0:
-                                valid_moves.append((i, j, x, y))
+                          if self.small_boards[i, j, x, y] == 0:
+                            valid_moves.append((i, j, x, y))
+
         return valid_moves
 
     def make_move(self, move: Tuple[int, int, int, int]) -> bool:
-        """Make a move and update game state."""
         i, j, x, y = move
         valid_moves = self.get_valid_moves()
         if move not in valid_moves:
@@ -42,7 +51,6 @@ class UltimateTicTacToe:
         return True
 
     def _check_small_board_win(self, i: int, j: int) -> bool:
-        """Check if a small board is won."""
         board = self.small_boards[i, j]
         for row in range(3):
             if abs(sum(board[row])) == 3:
@@ -57,7 +65,6 @@ class UltimateTicTacToe:
         return False
 
     def _check_main_board_win(self) -> bool:
-        """Check if the main board is won."""
         for row in range(3):
             if abs(sum(self.main_board[row])) == 3:
                 return True
@@ -71,13 +78,10 @@ class UltimateTicTacToe:
         return False
 
     def is_game_over(self) -> bool:
-        """Check if the game is over."""
         return self.game_over or len(self.get_valid_moves()) == 0
 
     def get_winner(self) -> int:
-        """Get the winner of the game."""
         return self.winner
 
     def get_board_state(self) -> Tuple[np.ndarray, np.ndarray]:
-        """Get the current state of the game."""
         return self.main_board.copy(), self.small_boards.copy() 
