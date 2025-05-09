@@ -1,10 +1,10 @@
 # AI-Project
 # Group Members
-# Abdullah Anis - 22K-4392
-# Ansharah Asad - 22K-4411
-# Touseef Naveed - 22K-4328
+## Abdullah Anis - 22K-4392
+## Ansharah Asad - 22K-4411
+## Touseef Naveed - 22K-4328
 
-# Ultimate Tic Tac Toe
+## Ultimate Tic Tac Toe
 A Python implementation of Ultimate Tic Tac Toe with an AI opponent using the Minimax algorithm with alpha-beta pruning.
 
 ## Description
