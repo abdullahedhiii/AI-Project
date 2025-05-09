@@ -14,8 +14,8 @@ class UltimateTicTacToeGUI:
             'board': '#ffffff',
             'available': '#e6f7ff',
             'unavailable': '#f5f5f5',
-            'won_x': '#ffecec',  # Light red for X wins
-            'won_o': '#ecfffe',  # Light blue for O wins
+            'won_x': '#ffecec',  
+            'won_o': '#ecfffe', 
             'X': '#ff6b6b',  
             'O': '#4ecdc4', 
             'text': '#333333'
