@@ -1,6 +1,7 @@
 # AI-Project
 ## Ultimate Tic Tac Toe
 A Python implementation of Ultimate Tic Tac Toe with an AI opponent using the Minimax algorithm with alpha-beta pruning.
+The code for the game is in the master branch.
 
 ## Description
 Ultimate Tic Tac Toe is an advanced variation of the classic Tic Tac Toe game. It consists of a 3x3 grid of smaller Tic Tac Toe boards, making it a more strategic and challenging game. The AI opponent uses the Minimax algorithm with alpha-beta pruning for optimal move selection.
