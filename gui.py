@@ -16,8 +16,8 @@ class UltimateTicTacToeGUI:
             'unavailable': '#f5f5f5',
             'won_x': '#ffecec',  # Light red for X wins
             'won_o': '#ecfffe',  # Light blue for O wins
-            'X': '#ff6b6b',  # Human player (X)
-            'O': '#4ecdc4',  # AI player (O)
+            'X': '#ff6b6b',  
+            'O': '#4ecdc4', 
             'text': '#333333'
         }
         self.game = UltimateTicTacToe()
@@ -156,9 +156,9 @@ class UltimateTicTacToeGUI:
                         for y in range(3):
                             button = self.buttons[i][j][x][y]
                             cell_value = self.game.small_boards[i, j, x, y]
-                            if cell_value == -1:  # Human
+                            if cell_value == -1:  
                                 button.config(text="X", fg=self.colors['X'])
-                            elif cell_value == 1:  # AI
+                            elif cell_value == 1:  
                                 button.config(text="O", fg=self.colors['O'])
                             else:
                                 button.config(text="")
