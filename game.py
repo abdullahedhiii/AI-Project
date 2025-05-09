@@ -71,13 +71,10 @@ class UltimateTicTacToe:
         return False
 
     def is_game_over(self) -> bool:
-        """Check if the game is over."""
         return self.game_over or len(self.get_valid_moves()) == 0
 
     def get_winner(self) -> int:
-        """Get the winner of the game."""
         return self.winner
 
     def get_board_state(self) -> Tuple[np.ndarray, np.ndarray]:
-        """Get the current state of the game."""
         return self.main_board.copy(), self.small_boards.copy() 
