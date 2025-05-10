@@ -4,7 +4,7 @@
 
 A Python implementation of Ultimate Tic Tac Toe with an AI opponent using the Minimax algorithm and alpha-beta pruning.  
 The code for the game is in the `master` branch.  
-🎥 **[Watch the demo video (opens in new tab)](https://drive.google.com/file/d/1kLquI8LRGueFUG6w8joTBKI_ZUlzPy2G/view?usp=sharing)**
+🎥 **[Watch the demo video](https://drive.google.com/file/d/1kLquI8LRGueFUG6w8joTBKI_ZUlzPy2G/view?usp=sharing)**
 
 ---
 
