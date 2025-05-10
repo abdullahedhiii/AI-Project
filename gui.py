@@ -183,16 +183,16 @@ class UltimateTicTacToeGUI:
     def show_game_over(self):
         winner = self.game.get_winner()
         if winner == 1:
-            print('AI wont')
+            # print('AI won')
             messagebox.showinfo("Game Over", "AI wins!")
         elif winner == -1:
-            print('AI lost')
+            # print('AI lost')
             messagebox.showinfo("Game Over", "You win!")
         else:
-            print('Draw')
+            # print('Draw')
             messagebox.showinfo("Game Over", "It's a tie!")
         average = self.ai.get_average_time_taken()
-        print(f'Average time taken by AI {average:.4f} seconds')
+        # print(f'Average time taken by AI {average:.4f} seconds')
         with open('game_test.csv','a') as file:
             file.write(f'{winner},{average:.4f}\n')
         self.root.quit()

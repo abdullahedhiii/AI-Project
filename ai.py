@@ -17,7 +17,6 @@ class UltimateTicTacToeAI:
         return sum/len(self.time_taken)
         
     def evaluate_board(self, game: UltimateTicTacToe) -> float:
-        """Evaluate the current board state using heuristics."""
         main_board, small_boards = game.get_board_state()
         score = 0
         for i in range(3):
